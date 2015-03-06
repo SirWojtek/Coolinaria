@@ -61,15 +61,20 @@
 - wirtualka: Mateusz
 - dokument dla Nikodema - Szymon
 
-### Taski
-- Serwer na wirtualce - Mateusz
-- Redmine - Mazi
-- Toolchain (python + django + AngularJS + baza danych) - Hubert
-- Deoxygen - Hubert
-- Import przepisów do bazy danych (http://api.bigoven.com/) - Szymon
-- grupa dyskusyjna - Marcin
+### Zadania
+(Tymczasowo).
 
-### Milestone
+Zadanie                                                      | Kto                    | Postęp     
+-------------------------------------------------------------|------------------------|----------------
+Serwer na wirtualce                                          |        Mateusz O.      |  done        
+Redmine                                                      |        Mateusz J.      |         
+Toolchain (python + django + AngularJS + baza danych)        |        Hubert          |          
+Deoxygen                                                     |        Hubert          |          
+Import przepisów do bazy danych (http://api.bigoven.com/)    |        Szymon          |    
+Grupa dyskusyjna                                             |        Marcin          |       
+
+
+### Kamienie milowe
 1. Przygotowane srodowisko (17.03.2015)
     - skonfigurowana baza danych,
     - przygotowane narzedzia programistyczne i deweloperskie,
