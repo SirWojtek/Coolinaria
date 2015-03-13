@@ -18,4 +18,4 @@ shell:
 	python $(project)/manage.py shell
 
 run:
-	python $(project)/manage.py runserver 0.0.0.0:8000
+	python $(project)/manage.py runserver localhost:8080
