@@ -1,6 +1,6 @@
 project=backend
 
-all: clean syncdb run
+all: clean syncdb admin run
 
 clean:
 	-rm -rf *~*
@@ -16,6 +16,9 @@ syncdb:
 
 shell:
 	python $(project)/manage.py shell
+
+superuser:
+	python $(project)/manage.py createsuperuser
 
 run:
 	python $(project)/manage.py runserver localhost:8080
