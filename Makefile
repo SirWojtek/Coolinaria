@@ -1,6 +1,6 @@
 project=backend
 
-all: clean syncdb admin run
+all: clean syncdb superuser run
 
 clean:
 	-rm -rf *~*
