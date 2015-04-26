@@ -5,10 +5,10 @@ all: clean syncdb superuser run
 clean:
 	-rm -rf *~*
 	-find . -name '*.pyc' -exec rm {} \;
-	-rm -f $(project)/*.sqlite3
+	-rm -f $(project)/database/*.db
 
 fresh_syncdb:
-	-rm -f $(project)/*.sqlite3
+	-rm -f $(project)/database/*.db
 	python $(project)/manage.py syncdb --noinput
 
 syncdb:

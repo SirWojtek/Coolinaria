@@ -26,8 +26,6 @@ class UserManager(UserManager):
     def update(self, userId, username, email, password):
         validate_email(email)
         user = User.objects.get(id=userId)
-        if user is None:
-            raise KeyError('Wrong user ID')
         user.username = username
         user.email = email
         user.set_password(password)
