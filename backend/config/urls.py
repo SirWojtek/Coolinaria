@@ -6,6 +6,7 @@ urlpatterns = patterns('',
     # url(r'^$', 'config.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'^backend/recipe/', include('recipe.urls', namespace = 'recipe')),
-    url(r'^backend/admin/', include(admin.site.urls)),
+    url(r'^user/', include('user.urls', namespace = 'user')),
+    url(r'^recipe/', include('recipe.urls', namespace = 'recipe')),
+    url(r'^admin/', include(admin.site.urls)),
 )

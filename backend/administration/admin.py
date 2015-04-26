@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.models import Group
-from administration.models import User
+from user.models import User
 
 admin.site.unregister(Group)
 admin.site.register(User)
