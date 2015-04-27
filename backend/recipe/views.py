@@ -1,6 +1,6 @@
 from recipe.models import Recipe
 from ingredient.models import Ingredient
-from user.models import User
+from account.models import User
 from django.http import HttpResponse
 
 

@@ -39,7 +39,7 @@ INSTALLED_APPS = (
     'administration',
     'ingredient',
     'recipe',
-    'user'
+    'account'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -68,7 +68,7 @@ DATABASES = {
     }
 }
 
-AUTH_USER_MODEL = 'user.User'
+AUTH_USER_MODEL = 'account.User'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/

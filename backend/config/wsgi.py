@@ -13,6 +13,7 @@ apache_configuration = os.path.dirname(__file__)
 project = os.path.dirname(apache_configuration)
 workspace = os.path.dirname(project)
 sys.path.append(workspace)
+sys.path.append('/var/www')
 sys.path.append('/var/www/backend')
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings")

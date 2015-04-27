@@ -1,4 +1,4 @@
-from user.models import User
+from account.models import User
 from django.http import HttpResponse
 from django.core.exceptions import ValidationError, ObjectDoesNotExist
 from django.contrib.auth import logout as userLogout, login as userLogin

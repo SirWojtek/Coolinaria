@@ -1,5 +1,5 @@
 from django.db import models
-from user.models import User
+from account.models import User
 from ingredient.models import Ingredient
 
 
