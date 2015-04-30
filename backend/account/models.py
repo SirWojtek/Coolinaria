@@ -7,15 +7,15 @@ from django.core.validators import validate_email
 
 class UserManager(UserManager):
 
-    def create(self, username, email, password):
+    def create(self, email, password):
         validate_email(email)
-        user = User.objects.create_user(username=username, email=email, password=password)
+        user = User.objects.create_user(username=email, email=email, password=password)
         user.save()
         return user
 
     def authenticate(self, email, password):
         validate_email(email)
-        user = User.objects.get(email=email)
+        user = User.objects.get(username=email)
         print user
         user = authenticate(username=user.username, password=password)
         print user
@@ -23,10 +23,10 @@ class UserManager(UserManager):
             raise(ValidationError('User authentication failed!'))
         return user
 
-    def update(self, userId, username, email, password):
+    def update(self, userId, email, password):
         validate_email(email)
         user = User.objects.get(id=userId)
-        user.username = username
+        user.username = email
         user.email = email
         user.set_password(password)
         user.save()

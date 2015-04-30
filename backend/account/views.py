@@ -35,13 +35,11 @@ def account(request):
     try:
         data = json.loads(request.body)
         if request.user.is_anonymous():
-            user = User.objects.create(username=data['username'],
-                                       email=data['email'],
+            user = User.objects.create(email=data['email'],
                                        password=data['password'])
             print 'Create: ' + str(user)
         else:
             user = User.objects.update(userId=request.user.id,
-                                       username=data['username'],
                                        email=data['email'],
                                        password=data['password'])
             request.user = user
