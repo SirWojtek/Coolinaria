@@ -10,6 +10,11 @@ class RecipeManager(models.Manager):
         recipe.save()
         return recipe
 
+    def delete(self, recipeId):
+        recipe = Recipe.objects.get(recipeId)
+        for ingredient in recipe.getIngredients():
+            ingredient.delete()
+        recipe.delete()
 
 class Recipe(models.Model):
     name = models.CharField(max_length = 64, unique = True)
@@ -22,14 +27,12 @@ class Recipe(models.Model):
     def getIngredients(self):
         return Ingredients.objects.filter(recipe = self)
 
-    def addIngredient(self, ingredient, quantity, unit):
-        ingredients = Ingredients(recipe = self, ingredient = ingredient, quantity = quantity,
-                                  unit = unit)
+    def addIngredient(self, ingredient, quantity):
+        ingredients = Ingredients(recipe = self, ingredient = ingredient, quantity = quantity)
         ingredients.save()
 
 
 class Ingredients(models.Model):
     recipe = models.ForeignKey(Recipe)
     ingredient = models.ForeignKey(Ingredient)
-    quantity = models.FloatField()
-    unit = models.CharField(max_length=10)
+    quantity = models.CharField(max_length=10)
