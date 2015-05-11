@@ -16,11 +16,30 @@ class RecipeManager(models.Manager):
             ingredient.delete()
         recipe.delete()
 
+
+class Difficulty:
+    UNKNOWN = 'unknown'
+    EASY = 'easy'
+    NORMAL = 'normal'
+    HARD = 'hard'
+
+DIFFICULTY = (
+    (Difficulty.UNKNOWN, 'Unknown'),
+    (Difficulty.EASY, 'Easy'),
+    (Difficulty.NORMAL, 'Normal'),
+    (Difficulty.HARD, 'Hard')
+)
+
 class Recipe(models.Model):
     name = models.CharField(max_length = 64, unique = True)
     author = models.ForeignKey(User)
     lastUpdate = models.DateTimeField(auto_now = True)
     formula = models.TextField()
+    duration = models.TimeField()
+    displays = models.IntegerField(default=0)
+    isAccepted = models.BooleanField(default=False)
+
+    difficulty = models.CharField(max_length=7, choices=DIFFICULTY, default=Difficulty.UNKNOWN)
 
     objects = RecipeManager()
 
