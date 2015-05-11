@@ -1,0 +1,73 @@
+<main class="main" role="main">
+		<!--wrap-->
+		<div class="wrap clearfix">
+			<!--breadcrumbs-->
+			<nav class="breadcrumbs">
+				<ul>
+					<li><a href="index.html" title="Home">Home</a></li>
+					<li>Search for Recipes</li>
+				</ul>
+			</nav>
+			<!--//breadcrumbs-->
+			
+			<!--row-->
+			<div class="row">			
+				<!--content-->
+				<section class="content full-width wow fadeInUp">																			
+					<!--recipefinder-->
+					<div class="container recipefinder">						
+						<div class="right">
+							<h3>Podaj nazwę składnika oraz wybierz kategorię</h3>
+							<div class="row">
+								<div class="search one-half"> 
+									<angucomplete id="ingredientSearchField"  placeholder="kalafior, marchew albo buraki"
+						              pause="100" titlefield="name" searchfields="name" localdata="ingredientList" selectedobject="selectedIngredient" 
+						              inputclass="form-control form-control-small">									
+								</div>
+								
+								<div class="one-half">
+									<select>										
+										<option>Śniadania</option>
+										<option>Obiady</option>
+										<option>Kolacje</option>
+										<option>Desery</option>
+									</select>
+								</div>														
+							</div>
+						</div>				
+					</div>
+					<!--//recipefinder-->
+
+					<div class="entries row">
+						<!--item-->
+							<div class="entry one-fourth wow fadeInLeft" data-wow-delay=".2s" ng-repeat="i in searchResults">
+								<figure>
+									<img src="{{i.img}}" alt="" />
+									<figcaption><a ng-click="i.target(i)"><i class="ico i-view"></i> <span>Wybierz!</span></a></figcaption>
+								</figure>
+								<div class="container">
+									<h2><a ng-click="i.target(i)">{{i.description}}</a></h2> 
+									<div class="actions">
+										<div>
+											<div class="difficulty"><i class="ico i-medium"></i><a href="#">medium</a></div>									
+										</div>
+									</div>
+								</div>
+							</div>
+						<!--item-->															
+												
+						<!--<div class="quicklinks">
+							<a href="#" class="button">More recipes</a>
+							<a href="javascript:void(0)" class="button scroll-to-top">Back to top</a>
+						</div>-->
+					</div>
+					<!--//results-->
+				</section>
+				<!--//content-->
+			</div>
+			<!--//row-->
+		</div>
+		<!--//wrap-->
+	</main>
+	<!--//main-->
+	<script>new WOW().init();</script>
