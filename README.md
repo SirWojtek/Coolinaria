@@ -4,8 +4,8 @@ This project is generated with [yo angular generator](https://github.com/yeoman/
 version 0.11.1.
 
 ## Build & development
+grunt serve for development - it'll create temp server at address localhost:9000 which will serve data
 
-Run `grunt` for building and `grunt serve` for preview.
 
 ## Testing
 
