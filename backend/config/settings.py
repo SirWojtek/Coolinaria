@@ -87,11 +87,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
-STATIC_URL = '/frontend/'
+STATIC_URL = '/'
 MEDIA_URL = '/media/'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "../frontend"),
+    os.path.join(BASE_DIR, "../frontend/dist"),
 )
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

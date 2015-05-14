@@ -1,5 +1,5 @@
 from account.models import User
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.core.exceptions import ValidationError, ObjectDoesNotExist
 from django.contrib.auth import logout as userLogout, login as userLogin
 from django.db import DatabaseError
@@ -20,7 +20,7 @@ def login(request):
         return HttpResponse(status=220)
     except (ValidationError, DatabaseError):
         return HttpResponse(status=221)
-    return HttpResponse(status=200)
+    return JsonResponse({'use'})
 
 
 def logout(request):

@@ -54,4 +54,4 @@ class Recipe(models.Model):
 class Ingredients(models.Model):
     recipe = models.ForeignKey(Recipe)
     ingredient = models.ForeignKey(Ingredient)
-    quantity = models.CharField(max_length=10)
+    quantity = models.CharField(max_length=100)

@@ -7,7 +7,7 @@ clean:
 	-rm -rf *~*
 	-find . -name '*.pyc' -exec rm {} \;
 	-rm -f $(project)/database/*.db
-	-rm -rf $(front)/dist	
+	-rm -rf $(front)/dist
 
 cleanall: clean
 	-rm -rf $(front)/bower_components
@@ -21,7 +21,7 @@ syncdb:
 	python $(project)/manage.py syncdb --noinput
 
 install:
-	bash -c "cd frontend; npm install"
+	bash -c "cd frontend; npm install; grunt install"
 
 shell:
 	python $(project)/manage.py shell
@@ -29,6 +29,8 @@ shell:
 superuser:
 	python $(project)/manage.py createsuperuser
 
-run:
+front:
 	grunt --base $(front) --gruntfile $(front)/Gruntfile.js
+
+back:
 	python $(project)/manage.py runserver localhost:8080
