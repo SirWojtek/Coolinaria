@@ -25,3 +25,21 @@ def addIngredient(request):
         return HttpResponse(status = 221)
     return HttpResponse(status = 200)
 
+def editIngredient(request):
+    if not request.is_ajax() or request.method != 'POST' or not request.User:
+        return HttpResponse(status = 501)
+
+    try:
+        data = json.loads(request.body)
+        ingredient = Ingredient.objects.filter(name = data['name'])
+        if not ingredient:
+            return HttpResponse(status = 220)
+        ingredient.description = data['description']
+        ingredient.image = 'emptypath'
+        ingredient.isSearchable = data['searchable']
+        ingredient.save()
+    except:
+        return HttpResponse(status = 501)
+    return HttpResponse(status = 200)
+
+
