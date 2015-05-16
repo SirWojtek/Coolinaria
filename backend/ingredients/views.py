@@ -1,10 +1,9 @@
 from django.http import HttpResponse
 from django.core.exceptions import ObjectDoesNotExist 
-from django.views.decorators.csrf import csrf_exempt
+# from django.views.decorators.csrf import csrf_exempt
 from ingredients.models import Ingredient
 import json
 
-@csrf_exempt
 def ingredientIndex(request):
     if not request.is_ajax():
         return HttpResponse(status = 501)
@@ -47,13 +46,13 @@ def _editIngredient(ingredient, data):
     return HttpResponse(status = 200)
 
 def _addIngredient(data):
-    # try:
+    try:
     ingredient = Ingredient.objects.create(
         name = data['name'],
         image = 'emptypath',
         isSearchable = data['searchable'])
-    # except:
-    #     return HttpResponse(status = 221)
+    except:
+        return HttpResponse(status = 221)
     return HttpResponse(status = 200)
 
 # unused method kept just in case
