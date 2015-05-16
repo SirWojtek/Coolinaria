@@ -1,6 +1,6 @@
 from django.db import models
 from account.models import User
-from ingredient.models import Ingredient
+from ingredients.models import Ingredient
 
 
 class RecipeManager(models.Manager):
