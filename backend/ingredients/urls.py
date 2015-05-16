@@ -3,6 +3,7 @@ from ingredients import views
 
 urlpatterns = patterns('',
     url(r'^/$', views.getIngredients, name = 'getIngredients'),
-    url(r'^/new$', views.addIngredient, name = 'addIngredient')
-    url(r'^/edit$', views.editIngredient, name = 'editIngredient')
+    url(r'^/new$', views.addIngredient, name = 'addIngredient'),
+    url(r'^/edit$', views.editIngredient, name = 'editIngredient'),
+    url(r'^/delete$', views.deleteIngredient, name = 'deleteIngredient')
 )

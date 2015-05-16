@@ -31,15 +31,27 @@ def editIngredient(request):
 
     try:
         data = json.loads(request.body)
-        ingredient = Ingredient.objects.filter(name = data['name'])
-        if not ingredient:
-            return HttpResponse(status = 220)
+        ingredient = Ingredient.objects.get(name = data['name'])
         ingredient.description = data['description']
         ingredient.image = 'emptypath'
         ingredient.isSearchable = data['searchable']
         ingredient.save()
+    except DoesNotExist:
+        HttpResponse(status = 220)
     except:
-        return HttpResponse(status = 501)
+        return HttpResponse(status = 221)
     return HttpResponse(status = 200)
 
+def deleteIngredient(request):
+    if not request.is_ajax() or request.method != 'POST' or not request.User:
+        return HttpResponse(status = 501)
 
+    try:
+        data = json.loads(request.body)
+        ingredient = Ingredient.objects.get(name = data['name'])
+        ingredient.delete()
+    except DoesNotExist:
+        HttpResponse(status = 220)
+    except:
+        return HttpResponse(status = 221)
+    return HttpResponse(status = 200)
