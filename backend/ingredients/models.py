@@ -13,7 +13,6 @@ class IngredientManager(models.Manager):
 
 class Ingredient(models.Model):
     name = models.CharField(max_length = 64, unique = True)
-    description = models.TextField()
     image = models.ImageField(upload_to = 'ingredient')
     isSearchable = models.BooleanField(default = True)
     objects = IngredientManager()

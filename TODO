@@ -1,0 +1,47 @@
+#Struktura katalogów#
+- we frontendzie mamy katalogi dist oraz ..
+- serwowanie plików z katalogu dist podczas developmentu
+  oraz na serwerze produkcyjnym
+- wszystkie zapytania do backendu maja przedrostek /backend/
+
+#Backend co do zrobienia#
+- przystosowania tworzenia/usuwania/wyszukiwania przepisów do
+  nowego modelu recipe w bazie danych
+- wyszukiwanie tylko przepisów, które sa zaakceptowane
+
+##Czego nie ma##
+
+#Przepisy:#
+- Modyfikacji przepisu, kto modyfikuje jakie prawa?
+- Wgrywania obrazków
+
+#Składniki:#
+- dodawanie składników podczas tworzenia nowego przepisu
+- usuwanie składników?
+
+#Akceptowanie przepisów:#
+- Pobieranie wszystkich przepisów
+- Akceptowanie dostępne tylko dla moderatorów
+
+
+
+#Co do zrobienia#
+
+Skladniki:
+- Dodawanie/usuwanie składników
+- Dodawanie zdjecia składnika / http multipart
+- dodac ilosc wyszukan
+- zwiekszanie ilosci skladnikow
+- pobieranie listy wszystkich skladnikow
+
+
+Przepis:
+- Dodac trudnosc przepisu / dodanie nowej tabeli
+- Pobieranie listy przepisów dla składnika
+- wyszukiwanie przepisów
+- Pobranie listy przepisów do akceptacji
+
+
+
+Podstawowe:
+- Mapowanie obiektow z bazy danych na jsona

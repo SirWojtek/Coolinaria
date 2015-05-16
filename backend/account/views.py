@@ -16,11 +16,9 @@ def login(request):
         print 'Login: ' + str(user)
     except KeyError:
         return HttpResponse(status=501)
-    except ObjectDoesNotExist:
+    except (ValidationError, DatabaseError, ObjectDoesNotExist):
         return HttpResponse(status=220)
-    except (ValidationError, DatabaseError):
-        return HttpResponse(status=221)
-    return JsonResponse({'use'})
+    return JsonResponse({'isModerator': 'true'})
 
 
 def logout(request):

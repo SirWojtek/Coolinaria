@@ -35,9 +35,10 @@ class Recipe(models.Model):
     author = models.ForeignKey(User)
     lastUpdate = models.DateTimeField(auto_now = True)
     formula = models.TextField()
-    duration = models.TimeField()
+    duration = models.CharField(max_length = 100)
     displays = models.IntegerField(default=0)
     isAccepted = models.BooleanField(default=False)
+    image = models.ImageField(upload_to = 'ingredient')
 
     difficulty = models.CharField(max_length=7, choices=DIFFICULTY, default=Difficulty.UNKNOWN)
 
