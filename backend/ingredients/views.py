@@ -14,4 +14,14 @@ def addIngredient(request):
     if not request.is_ajax() or request.method != 'POST' or not request.User:
         return HttpResponse(status = 501)
 
-    
+    try:
+        data = json.loads(request.body)
+        ingredient = Ingredient.objects.create(
+            name = data['name'],
+            description = data['description'],
+            image = 'emptypath',
+            isSearchable = data['searchable'])
+    except:
+        return HttpResponse(status = 221)
+    return HttpResponse(status = 200)
+
