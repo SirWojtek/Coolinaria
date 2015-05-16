@@ -1,10 +1,9 @@
 from recipe.models import Recipe
-from ingredient.models import Ingredient
+from ingredients.models import Ingredient
 from account.models import User
 from django.http import HttpResponse
 from django.db import DatabaseError
 import json
-
 
 '''
 This function could be executed only once, because of unique fields:
