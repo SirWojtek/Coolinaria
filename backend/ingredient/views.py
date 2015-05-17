@@ -71,5 +71,18 @@ def deleteIngredient(request):
     return HttpResponse(status = 200)
 
 def topIngredients(request):
-    if not request.is_ajax() or request.method != 'POST':
+    if not request.is_ajax() or request.method != 'GET':
         return HttpResponse(status = 501)
+
+    return _getTiledIngredients()
+
+def _getTiledIngredients():
+    ingredients = []
+
+    for ing in Ingredient.objects.all():
+        ingredients.append(ing.getTiledDict())
+
+    ingredients = sorted(ingredients, key = lambda k : k['displays'], reverse = True)
+
+    return HttpResponse(json.dumps(ingredients),
+        content_type = "application/json", status = 200)

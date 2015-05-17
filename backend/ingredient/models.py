@@ -15,7 +15,7 @@ class Ingredient(models.Model):
     name = models.CharField(max_length = 64, unique = True)
     image = models.ImageField(upload_to = 'ingredient')
     isSearchable = models.BooleanField(default = True)
-    displays = models.IntegerField(default = 0)
+    displays = models.IntegerField(default = 10)
     objects = IngredientManager()
 
     def getDict(self):
@@ -23,5 +23,12 @@ class Ingredient(models.Model):
             'name': self.name,
             'image': 'emptypath', # TODO: change to path
             'isSearchable' : self.isSearchable,
+            'displays' : self.displays
+        }
+
+    def getTiledDict(self):
+        return {
+            'name' : self.name,
+            'image' : 'emptypath',
             'displays' : self.displays
         }
