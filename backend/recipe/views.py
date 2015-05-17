@@ -1,5 +1,5 @@
 from recipe.models import Recipe
-from ingredients.models import Ingredient
+from ingredient.models import Ingredient
 from account.models import User
 from django.http import HttpResponse
 from django.db import DatabaseError

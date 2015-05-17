@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.core.exceptions import ObjectDoesNotExist 
 from django.views.decorators.csrf import csrf_exempt
-from ingredients.models import Ingredient
+from ingredient.models import Ingredient
 import json
 
 @csrf_exempt
@@ -38,7 +38,6 @@ def _findIngredient(data):
 
 def _editIngredient(ingredient, data):
     try:
-        ingredient.description = data['description']
         ingredient.image = 'emptypath'
         ingredient.isSearchable = data['searchable']
         ingredient.save()
@@ -48,17 +47,17 @@ def _editIngredient(ingredient, data):
 
 def _addIngredient(data):
     try:
-    ingredient = Ingredient.objects.create(
-        name = data['name'],
-        image = 'emptypath',
-        isSearchable = data['searchable'])
+        ingredient = Ingredient.objects.create(
+            name = data['name'],
+            image = 'emptypath',
+            isSearchable = data['searchable'])
     except:
         return HttpResponse(status = 221)
     return HttpResponse(status = 200)
 
 # unused method kept just in case
 def deleteIngredient(request):
-    if not request.is_ajax() or request.method != 'POST' or not request.User:
+    if not request.is_ajax() or request.method != 'POST':
         return HttpResponse(status = 501)
 
     try:
@@ -70,3 +69,7 @@ def deleteIngredient(request):
     except:
         return HttpResponse(status = 221)
     return HttpResponse(status = 200)
+
+def topIngredients(request):
+    if not request.is_ajax() or request.method != 'POST':
+        return HttpResponse(status = 501)
