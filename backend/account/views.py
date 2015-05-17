@@ -18,7 +18,7 @@ def login(request):
         return HttpResponse(status=501)
     except (ValidationError, DatabaseError, ObjectDoesNotExist):
         return HttpResponse(status=220)
-    return JsonResponse({'isModerator': 'true'})
+    return JsonResponse({'isModerator': True})
 
 
 def logout(request):
