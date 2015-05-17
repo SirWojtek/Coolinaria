@@ -1,9 +1,10 @@
 from django.http import HttpResponse
 from django.core.exceptions import ObjectDoesNotExist 
-# from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt
 from ingredients.models import Ingredient
 import json
 
+@csrf_exempt
 def ingredientIndex(request):
     if not request.is_ajax():
         return HttpResponse(status = 501)

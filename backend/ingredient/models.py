@@ -15,11 +15,13 @@ class Ingredient(models.Model):
     name = models.CharField(max_length = 64, unique = True)
     image = models.ImageField(upload_to = 'ingredient')
     isSearchable = models.BooleanField(default = True)
+    displays = models.IntegerField(default = 0)
     objects = IngredientManager()
 
     def getDict(self):
         return {
             'name': self.name,
             'image': 'emptypath', # TODO: change to path
-            'isSearchable' : self.isSearchable
+            'isSearchable' : self.isSearchable,
+            'displays' : self.displays
         }
