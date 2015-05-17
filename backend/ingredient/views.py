@@ -86,3 +86,13 @@ def _getTiledIngredients():
 
     return HttpResponse(json.dumps(ingredients),
         content_type = "application/json", status = 200)
+
+def statsDisplayAll(request):
+    if not request.is_ajax() or request.method != 'GET':
+        return HttpResponse(status = 501)
+    return HttpResponse(status = 200)
+
+def statsDisplay(request, count):
+    if not request.is_ajax() or request.method != 'GET':
+        return HttpResponse(status = 501)
+    return HttpResponse(status = 200)
