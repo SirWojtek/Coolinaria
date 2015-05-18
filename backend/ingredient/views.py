@@ -18,7 +18,7 @@ def ingredientIndex(request):
         if ingredient:
             return _editIngredient(ingredient, data)
         else:
-            return _addIngredient(data)
+            return _addIngredient(data, request)
 
 def _getIngredients():
     ingredients = []
@@ -41,19 +41,28 @@ def _editIngredient(ingredient, data):
         ingredient.image = 'emptypath'
         ingredient.isSearchable = data['searchable']
         ingredient.save()
-    except:
+    except Exception as e:
+        print e
         return HttpResponse(status = 221)
     return HttpResponse(status = 200)
 
-def _addIngredient(data):
+def _addIngredient(data, request):
     try:
         ingredient = Ingredient.objects.create(
             name = data['name'],
-            image = 'emptypath',
+            # image = _loadImage(request, data['name']),
             isSearchable = data['searchable'])
-    except:
+    except Exception as e:
+        print e
         return HttpResponse(status = 221)
     return HttpResponse(status = 200)
+
+def _loadImage(request, filename):
+    path = 'media/ingredients/' + filename
+    with open(path, 'wb+') as dest:
+        for chunk in request.FILES.itervalues().next().chunks():
+            dest.write(chunk)
+    return path
 
 # unused method kept just in case
 def deleteIngredient(request):
@@ -66,7 +75,8 @@ def deleteIngredient(request):
         ingredient.delete()
     except DoesNotExist:
         HttpResponse(status = 220)
-    except:
+    except Exception as e:
+        print e
         return HttpResponse(status = 221)
     return HttpResponse(status = 200)
 
@@ -90,9 +100,22 @@ def _getTiledIngredients():
 def statsDisplayAll(request):
     if not request.is_ajax() or request.method != 'GET':
         return HttpResponse(status = 501)
-    return HttpResponse(status = 200)
+    return _createHistogram()
 
 def statsDisplay(request, count):
     if not request.is_ajax() or request.method != 'GET':
         return HttpResponse(status = 501)
-    return HttpResponse(status = 200)
+    return _createHistogram(int(count))
+
+def _createHistogram(count = -1):
+    result = []
+    i = 0
+    
+    for ing in Ingredient.objects.all():
+            result.append(ing.getStatDict())
+
+    result = sorted(result, key = lambda k : k['value'], reverse = True)
+    if count != -1:
+        result = result[:count]
+
+    return HttpResponse(json.dumps(result))
