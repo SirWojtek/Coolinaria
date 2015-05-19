@@ -1,7 +1,7 @@
 project=backend
 front=frontend
 
-all: clean install syncdb superuser run
+all: clean install syncdb permission superuser front
 
 clean:
 	-rm -rf *~*
@@ -19,9 +19,13 @@ fresh_syncdb:
 
 syncdb:
 	python $(project)/manage.py syncdb --noinput
+	
+permission:
+	chown www-data:www-data backend/database -R
+	chmod g+w backend/database -R
 
 install:
-	bash -c "cd frontend; npm install; grunt install"
+	bash -c "cd frontend; npm install; bower --allow-root install; grunt"
 
 shell:
 	python $(project)/manage.py shell

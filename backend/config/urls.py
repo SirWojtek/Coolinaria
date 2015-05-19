@@ -2,8 +2,8 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
 urlpatterns = patterns('',
-    url(r'^backend/account/', include('account.urls', namespace = 'account')),
-    url(r'^backend/recipe/', include('recipe.urls', namespace = 'recipe')),
-    url(r'^backend/ingredient/', include('ingredient.urls', namespace = 'ingredient')),
-    url(r'^backend/admin/', include(admin.site.urls)),
+    url(r'^account/', include('account.urls', namespace = 'account')),
+    url(r'^recipe/', include('recipe.urls', namespace = 'recipe')),
+    url(r'^ingredient/', include('ingredient.urls', namespace = 'ingredient')),
+    url(r'^admin/', include(admin.site.urls)),
 )
