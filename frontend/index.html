@@ -1,6 +1,152 @@
-<!doctype html> <html class="no-js"> <head> <meta charset="utf-8"> <title>Coolinaria - znajdź swój przepis!</title> <meta name="description" content=""> <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"> <link href="http://fonts.googleapis.com/css?family=Raleway:400,300,500,600,700,800" rel="stylesheet"> <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> <link rel="stylesheet" href="styles/vendor.93a2b65d.css"> <link rel="stylesheet" href="styles/main.16c86e60.css"> <link rel="stylesheet" href="styles/style.7368e2cb.css"> <link rel="stylesheet" href="styles/animate.7d57ea77.css">  <body ng-app="frontApp" class="home"> <!--[if lt IE 7]>
+<!doctype html>
+<html class="no-js">
+	<head>
+		<meta charset="utf-8">
+		<title>Coolinaria - znajdź swój przepis!</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		<link href="http://fonts.googleapis.com/css?family=Raleway:400,300,500,600,700,800" rel="stylesheet">
+		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+		<!-- build:css(.) styles/vendor.css -->
+		<!-- bower:css -->
+		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+		<!-- endbower -->
+		<!-- endbuild -->
+		<!-- build:css(.tmp) styles/main.css -->
+		<!--<link rel="stylesheet" href="styles/main.css"> -->
+		<!-- endbuild -->
+		<!-- build:css(.tmp) styles/style.css -->
+		<link rel="stylesheet" href="styles/style.css">
+		<!-- endbuild -->
+		<!-- build:css(.tmp) styles/animate.css -->
+		<link rel="stylesheet" href="styles/animate.css">
+		<!-- endbuild -->
+	</head>
+	<body ng-app="frontApp" class="home">
+		<!--[if lt IE 7]>
 		<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-		<![endif]--> <!-- Add your site or application content here --> <header class="head" role="banner"> <!--wrap--> <div class="wrap clearfix"> <a href="#/" title="Coolinaria" class="logo"><img src="images/ico/logo.4ae34a35.png" alt="SocialChef logo"></a> <nav class="main-nav" role="navigation" id="menu"> <ul> <li class="current-menu-item"> <a href="#/"><span>Main</span></a> </li> <li> <a href="#/find"><span>Śniadania</span></a> </li> <li> <a href="#/find"><span>Obiady</span></a> </li> <li> <a href="#/find"><span>Kolacje</span></a> </li> <li> <a href="#/find"><span>Desery</span></a> </li> <li> <a href="#/contact" title="Contact"><span>Kontakt</span></a> </li> </ul> </nav> <nav class="user-nav" role="navigation"> <ul> <li class="light"> <a href="#/find" title="Search for recipes"><i class="ico i-search"></i> <span>Szukaj przepisów</span></a> </li> <li class="medium"> <a href="#/login" title="My account"><i class="ico i-account"></i> <span>Moje konto</span></a> </li> <li class="dark"> <a href="#/submit" title="Submit a recipe"><i class="ico i-submitrecipe"></i> <span>Dodaj przepis</span></a> </li> </ul> </nav> </div> <!--//wrap--> </header> <!--//header--> <div ng-view=""></div> <footer class="foot" role="contentinfo"> <div class="wrap clearfix"> <div class="row"> <article class="one-half"> <h5>o Coolinaria</h5> <p> Jest to projekt, który powstał w ramach zaliczenia kursu 'Inżynieria Internetowa' na Politechnice Wrocławskiej. Stworzony przez piątkę ambitnych, pełnych energii i zapału studentów Informatyki, aktywnie przez nich utrzymywany i rozwijany. </p> </article> <article class="one-fourth"> <h5>Potrzebujesz pomocy?</h5> <p> Skontaktuj się z nami </p> <p> <em>T: </em> 667 127 887 <br> <em>E: </em>coolinaria@email.com </p> </article> <article class="one-fourth"> <h5>Polub nas!</h5> <ul class="social"> <li class="facebook"> <a href="#" title="facebook">facebook</a> </li> <li class="youtube"> <a href="#" title="youtube">youtube</a> </li> <li class="rss"> <a href="#" title="rss">rss</a> </li> <li class="gplus"> <a href="#" title="gplus">google plus</a> </li> <li class="linkedin"> <a href="#" title="linkedin">linkedin</a> </li> <li class="twitter"> <a href="#" title="twitter">twitter</a> </li> <li class="pinterest"> <a href="#" title="pinterest">pinterest</a> </li> <li class="vimeo"> <a href="#" title="vimeo">vimeo</a> </li> </ul> </article> <div class="bottom"> <p class="copy"> Copyright 2015 Coolinaria. Wszystkie prawa zastrzeżone </p> </div> </div> </div> </footer> <div class="preloader"> <div class="spinner"></div> </div> <!-- Google Analytics: change UA-XXXXX-X to be your site's ID --> <script>! function(A, n, g, u, l, a, r) {
+		<![endif]-->
+
+		<!-- Add your site or application content here -->
+		<header class="head" role="banner">
+			<!--wrap-->
+			<div class="wrap clearfix">
+				<a href="#/" title="Coolinaria" class="logo"><img src="images/ico/logo.png" alt="Cooliaria logo" /></a>
+
+				<nav class="main-nav" role="navigation" id="menu">
+					<ul>
+						<li class="current-menu-item">
+							<a href="#/"><span>Main</span></a>
+						</li>
+						<li>
+							<a href="#/find?types=breakfast"><span>Śniadania</span></a>
+						</li>
+						<li>
+							<a href="#/find?types=dinner"><span>Obiady</span></a>
+						</li>
+						<li>
+							<a href="#/find?types=supper"><span>Kolacje</span></a>							
+						</li>
+						<li>
+							<a href="#/find?types=dessert"><span>Desery</span></a>							
+						</li>
+						<li>
+							<a href="#/find?types=snack"><span>Przekąski</span></a>							
+						</li>
+						<li>
+							<a href="#/contact" title="Contact"><span>Kontakt</span></a>
+						</li>
+					</ul>
+				</nav>
+
+				<nav class="user-nav" role="navigation">
+					<ul>
+						<li class="light">
+							<a href="#/find" title="Search for recipes"><i class="ico i-search"></i> <span>Szukaj przepisów</span></a>
+						</li>
+						<li class="medium">
+							<a href="#/login" title="My account"><i class="ico i-account"></i> <span>Moje konto</span></a>
+						</li>
+						<li class="dark">
+							<a href="#/submit" title="Submit a recipe"><i class="ico i-submitrecipe"></i> <span>Dodaj przepis</span></a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+			<!--//wrap-->
+		</header>
+		<!--//header-->
+	
+		<div ng-view=""></div>
+
+
+	
+
+		<footer class="foot" role="contentinfo">
+			<div class="wrap clearfix">
+				<div class="row">
+					<article class="one-half">
+						<h5>o Coolinaria</h5>
+						<p>
+							Jest to projekt, który powstał w ramach zaliczenia kursu 'Inżynieria Internetowa' na Politechnice Wrocławskiej. Stworzony przez piątkę ambitnych, pełnych energii i zapału studentów Informatyki, aktywnie przez nich utrzymywany i rozwijany.
+						</p>
+					</article>
+					<article class="one-fourth">
+						<h5>Potrzebujesz pomocy?</h5>
+						<p>
+							Skontaktuj się z nami
+						</p>
+						<p>
+							<em>T: </em> 667 127 887
+							<br />
+							<em>E: </em>coolinaria@email.com
+						</p>
+					</article>
+					<article class="one-fourth">
+						<h5>Polub nas!</h5>
+						<ul class="social">
+							<li class="facebook">
+								<a href="#" title="facebook">facebook</a>
+							</li>
+							<li class="youtube">
+								<a href="#" title="youtube">youtube</a>
+							</li>
+							<li class="rss">
+								<a href="#" title="rss">rss</a>
+							</li>
+							<li class="gplus">
+								<a href="#" title="gplus">google plus</a>
+							</li>
+							<li class="linkedin">
+								<a href="#" title="linkedin">linkedin</a>
+							</li>
+							<li class="twitter">
+								<a href="#" title="twitter">twitter</a>
+							</li>
+							<li class="pinterest">
+								<a href="#" title="pinterest">pinterest</a>
+							</li>
+							<li class="vimeo">
+								<a href="#" title="vimeo">vimeo</a>
+							</li>
+						</ul>
+					</article>
+
+					<div class="bottom">
+						<p class="copy">
+							Copyright 2015 Coolinaria. Wszystkie prawa zastrzeżone
+						</p>						
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<div class="preloader">
+			<div class="spinner"></div>
+		</div>
+		<!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+		<script>
+			! function(A, n, g, u, l, a, r) {
 				A.GoogleAnalyticsObject = l, A[l] = A[l] ||
 				function() {
 					(A[l].q = A[l].q || []).push(arguments)
@@ -11,4 +157,47 @@
 			}(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
 			ga('create', 'UA-XXXXX-X');
-			ga('send', 'pageview');</script> <script src="scripts/vendor.bf21c4d8.js"></script> <script src="scripts/scripts.1da2e6b7.js"></script> <script src="js/wow.min.js"></script> <script src="js/jquery.slicknav.min.js"></script> <script src="js/scripts.js"></script> 
+			ga('send', 'pageview');
+		</script>
+
+
+		<!-- build:js(.) scripts/vendor.js -->
+		<!-- bower:js -->
+		<script src="bower_components/jquery/dist/jquery.js"></script>
+		<script src="bower_components/angular/angular.js"></script>
+		<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+		<script src="bower_components/angular-animate/angular-animate.js"></script>
+		<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+		<script src="bower_components/angular-resource/angular-resource.js"></script>
+		<script src="bower_components/angular-route/angular-route.js"></script>
+		<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+		<script src="bower_components/angular-touch/angular-touch.js"></script>
+		<script src="bower_components/angular-mocks/angular-mocks.js"></script>
+		<script src="bower_components/angucomplete/angucomplete.js"></script>
+		<!-- endbower -->
+		<!-- endbuild -->
+
+		<!-- build:js({.tmp,app}) scripts/scripts.js -->
+		<script src="scripts/app.js"></script>
+		<script src="scripts/controllers/main.js"></script>
+		<script src="scripts/controllers/about.js"></script>
+		<script src="scripts/controllers/receipe.js"></script>
+		<script src="scripts/controllers/find.js"></script>
+		<script src="scripts/controllers/login.js"></script>
+		<script src="scripts/controllers/contact.js"></script>
+		<script src="scripts/controllers/submit_receipe.js"></script>
+		<!-- endbuild -->		
+		<!-- build:js({.tmp,app}) js/wow.min.js -->
+		<script src="js/wow.min.js"></script>
+		<!-- endbuild -->		
+		<!-- build:js({.tmp,app}) js/jquery.slicknav.min.js -->
+		<script src="js/jquery.slicknav.min.js"></script>
+		<!-- endbuild -->			
+		<!-- build:js({.tmp,app}) js/scripts.js -->
+		<script src="js/scripts.js"></script>	
+<script src="scripts/services/login.js"></script>
+<script src="scripts/services/loginservice.js"></script>
+<script src="scripts/services/receipeservice.js"></script>
+<script src="scripts/services/ingredientservice.js"></script>
+		<!-- endbuild -->			
+</html>

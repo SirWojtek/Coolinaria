@@ -1,1 +1,35 @@
-<main class="main" role="main"> <!--wrap--> <div class="wrap clearfix"> <!--row--> <div class="row"> <h1>&nbsp</h1><h1>&nbsp</h1> </div> <div class="row"> <!--content--> <section class="content center full-width wow fadeInUp"> <div class="modal container"> <h3>Login</h3> <div class="f-row"> <input type="text" placeholder="Nazwa użytkownika"> </div> <div class="f-row"> <input type="password" placeholder="Hasło"> </div> <section> </section> <div class="f-row bwrap"> <input type="submit" value="Zaloguj" ng-model="asdf"> </div> <p>Nie masz jeszcze konta? <a href="register.html">Zarejestruj się.</a></p> </div> </section> <!--//content--> </div> <!--//row--> </div> <!--//wrap--> </main>
+<main class="main" role="main">
+		<!--wrap-->
+		<div class="wrap clearfix">
+			<!--row-->
+			<div class="row">
+				<h1>&nbsp</h1><h1>&nbsp</h1>				
+			</div>
+			<div class="row">
+			<!--content-->
+				<section class="content center full-width wow fadeInUp">
+					<div class="modal container">
+						<h3>Login</h3>
+						<div class="f-row">
+							{{errorMessage}}
+						</div>
+						<div class="f-row">
+							<input type="text" placeholder="Nazwa użytkownika" ng-model="username"/>
+						</div>
+						<div class="f-row">
+							<input type="password" placeholder="Hasło" ng-model="password"/>
+						</div>
+						<section>						
+						</section>
+						<div class="f-row bwrap"> 
+							<input type="button" value="Zaloguj" ng-click="loginButton(username, password)"/> 
+						</div>
+						<p>Nie masz jeszcze konta? <a href="register.html">Zarejestruj się.</a></p>
+					</div>
+				</section>
+				<!--//content-->
+			</div>
+			<!--//row-->
+		</div> 
+		<!--//wrap-->
+</main>

@@ -1,1 +1,53 @@
-<main class="main" role="main"> <!--intro--> <div class="intro"> <figure class="bg"><img src="images/intro.b4c2595d.jpg" alt=""></figure> <!--wrap--> <div class="wrap clearfix"> <!--row--> <div class="row"> <article class="three-fourth text wow zoomIn" data-wow-delay=".2s"> <h1>Witaj na Coolinaria!</h1> <p>Coolinaria to najlepsza <strong>strona poświęcona gotowaniu</strong>. Tylko u nas znajdziesz przepis z dokładnie tym składnikiem, którego potrzebujesz.</p> <p>A może zechcesz podzielić się z nami własnym przepisem? </p> <a href="#/register" class="button white more medium">Dołącz do społeczności</a> <p>Jesteś już zarejestrowany? Kliknij <a href="#/login">tutaj</a> aby się zalogować.</p> </article> <!--search recipes widget--> <div class="one-fourth wow fadeInDown" data-wow-delay="2s"> <div class="widget container"> <div class="textwrap"> <h3>Szukaj przepisów</h3> <p>Wszystko, co musisz zrobić to podać jeden składnik</p> <p>Znajdziemy dla Ciebie przepisy z tym składnikiem.</p> <p>Możesz także wybrać kategorię, która Cię interesuje.</p> </div> <form action="find_recipe.html"> <div class="f-row"> <input type="text" placeholder="Podaj składnik"> </div> <div class="f-row"> <select> <option>Wszystkie <option>Śniadania <option>Obiady <option>Kolacje <option>Desery </select> </div> <div class="f-row bwrap"> <a href="#/find"><button type="submit" value="Zacznij gotować!">Zacznij gotować!</button></a> </div> </form> </div> </div> <!--//search recipes widget--> </div> <!--//row--> </div> <!--//wrap--> </div> <!--//intro--> <!--wrap--> </main> <!--//main--> <script>new WOW().init();</script>
+<main class="main" role="main">
+		<!--intro-->
+		<div class="intro">
+			<figure class="bg"><img src="images/intro.jpg" alt="" /></figure>
+			
+			<!--wrap-->
+			<div class="wrap clearfix">
+				<!--row-->
+				<div class="row">
+					<article class="three-fourth text wow zoomIn" data-wow-delay=".2s">
+						<h1>Witaj na Coolinaria!</h1>
+						<p>Coolinaria to najlepsza <strong>strona poświęcona gotowaniu</strong>. Tylko u nas znajdziesz przepis z dokładnie tym składnikiem, którego potrzebujesz.</p>
+						<p>A może zechcesz podzielić się z nami własnym przepisem? </p>
+						<a href="#/register" class="button white more medium">Dołącz do społeczności</a>
+						<p>Jesteś już zarejestrowany? Kliknij <a href="#/login">tutaj</a> aby się zalogować.</p>
+					</article>
+					
+					<!--search recipes widget-->
+					<div class="one-fourth wow fadeInDown" data-wow-delay="2s">
+						<div class="widget container">
+							<div class="textwrap">
+								<h3>Szukaj przepisów</h3>
+								<p>Wszystko, co musisz zrobić to podać jeden składnik</p>
+								<p>Znajdziemy dla Ciebie przepisy z tym składnikiem.</p>
+								<p>Możesz także wybrać kategorię, która Cię interesuje.</p> 								
+							</div>
+							<form>
+								<div class="f-row">
+									<input type="text" ng-model="searchField" placeholder="Podaj składnik" />
+								</div>
+								<div class="f-row">
+									<select ng-model="selectedType">										
+										<option ng-repeat="t in types" value="{{t.id}}">{{t.name}}</option>																	
+									</select>
+								</div>
+								<div class="f-row bwrap">
+									<button value="Zacznij gotować!" ng-click="search(searchField)">Zacznij gotować!</button>
+								</div>
+							</form>
+						</div>
+					</div>
+					<!--//search recipes widget-->
+				</div>
+				<!--//row-->
+			</div>
+			<!--//wrap-->
+		</div>
+		<!--//intro-->
+		
+		<!--wrap-->
+	</main>
+	<!--//main-->		
+	<script>new WOW().init();</script>

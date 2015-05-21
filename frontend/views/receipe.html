@@ -1,1 +1,65 @@
-<main class="main" role="main"> <!--wrap--> <div class="wrap clearfix"> <!--breadcrumbs--> <nav class="breadcrumbs"> <ul> <li><a href="index.html" title="Home">Home</a></li> <li><a href="#" title="Recipes">Recipes</a></li> <li><a href="recipes.html" title="Cocktails">Deserts</a></li> <li>Recipe</li> </ul> </nav> <!--//breadcrumbs--> <!--row--> <div class="row"> <header class="s-title wow fadeInLeft"> <h1>{{dish.title}}</h1> </header> <!--content--> <section class="content"> <!--recipe--> <div class="recipe"> <div class="row"> <!--two-third--> <article class="two-third wow fadeInLeft"> <div class="image"><a href="#"><img src="{{dish.img}}" alt=""></a></div> <div class="intro"><p><strong>{{dish.description}}</strong></p></div> <div class="instructions"> <ol> <li ng-repeat="s in dish.steps"> {{s.text}} </li> </ol> </div> </article> <!--//two-third--> <!--one-third--> <article class="one-third wow fadeInDown"> <dl class="ingredients"> <div ng-repeat="i in dish.ingredients"> <dt>{{i.amount}} <dd>{{i.name}} </div> </dl> </article> <!--//one-third--> </div> </div> <!--//recipe--> </section> <!--//content--> </div> <!--//row--> </div> <!--//wrap--> </main> <!--//main--> <script>new WOW().init();</script>
+
+	<main class="main" role="main">
+		<!--wrap-->
+		<div class="wrap clearfix">
+			<!--breadcrumbs-->
+			<nav class="breadcrumbs">
+				<ul>
+					<li><a href="index.html" title="Home">Home</a></li>
+					<li><a href="#" title="Recipes">Recipes</a></li>
+					<li><a href="recipes.html" title="Cocktails">Deserts</a></li>
+					<li>Recipe</li>
+				</ul>
+			</nav>
+			<!--//breadcrumbs-->
+			
+			<!--row-->
+			<div class="row">
+				<header class="s-title wow fadeInLeft">
+					<h1>{{dish.name}}</h1>
+				</header>
+				<!--content-->
+
+				<section class="content">
+					<!--recipe-->
+						<div class="recipe">
+							<div class="row">
+
+								<!--two-third-->
+								<article class="two-third wow fadeInLeft">
+									<div class="image"><a href="#"><img src="{{dish.image}}" alt="" /></a></div>
+									<div class="intro"><p><strong>{{dish.description}}</p></div>
+									<div class="instructions">
+										<ol>
+											<li ng-repeat="s in dish.steps">
+												{{s.text}}
+											</li>
+										</ol>
+									</div>
+								</article>
+								<!--//two-third-->
+								
+								<!--one-third-->
+								<article class="one-third wow fadeInDown">
+									<dl class="ingredients">
+										<div ng-repeat="i in dish.ingredients">
+										<dt>{{i.amount}}</dt>										
+										<dd>{{i.name}}</dd>
+										</div>										
+									</dl>															
+								</article>
+											
+								<!--//one-third-->
+							</div>
+						</div>
+						<!--//recipe-->																			
+				</section>
+				<!--//content-->
+				
+			</div>
+			<!--//row-->
+		</div>
+		<!--//wrap-->
+	</main>
+	<!--//main-->
+	<script>new WOW().init();</script>
