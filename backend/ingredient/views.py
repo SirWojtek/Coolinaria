@@ -4,11 +4,8 @@ from django.views.decorators.csrf import csrf_exempt
 from ingredient.models import Ingredient
 import json
 
-@csrf_exempt
+# @csrf_exempt
 def ingredientIndex(request):
-    if not request.is_ajax():
-        return HttpResponse(status = 501)
-
     if request.method == 'GET':
         return _getIngredients()
     elif request.method == 'POST':
@@ -66,7 +63,7 @@ def _loadImage(request, filename):
 
 # unused method kept just in case
 def deleteIngredient(request):
-    if not request.is_ajax() or request.method != 'POST':
+    if request.method != 'POST':
         return HttpResponse(status = 501)
 
     try:
@@ -81,7 +78,7 @@ def deleteIngredient(request):
     return HttpResponse(status = 200)
 
 def topIngredients(request):
-    if not request.is_ajax() or request.method != 'GET':
+    if request.method != 'GET':
         return HttpResponse(status = 501)
 
     return _getTiledIngredients()
@@ -98,12 +95,12 @@ def _getTiledIngredients():
         content_type = "application/json", status = 200)
 
 def statsDisplayAll(request):
-    if not request.is_ajax() or request.method != 'GET':
+    if request.method != 'GET':
         return HttpResponse(status = 501)
     return _createHistogram()
 
 def statsDisplay(request, count):
-    if not request.is_ajax() or request.method != 'GET':
+    if request.method != 'GET':
         return HttpResponse(status = 501)
     return _createHistogram(int(count))
 

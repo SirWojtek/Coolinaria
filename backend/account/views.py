@@ -4,10 +4,11 @@ from django.core.exceptions import ValidationError, ObjectDoesNotExist
 from django.contrib.auth import logout as userLogout, login as userLogin
 from django.db import DatabaseError
 import json
+from django.views.decorators.csrf import csrf_exempt
 
-
+@csrf_exempt
 def login(request):
-    if not request.is_ajax() or request.method != 'POST':
+    if request.method != 'POST':
         return HttpResponse(status=501)
     try:
         data = json.loads(request.body)
@@ -20,15 +21,13 @@ def login(request):
         return HttpResponse(status=220)
     return JsonResponse({'isModerator': True})
 
-
 def logout(request):
     print 'Logout: ' + str(request.user)
     userLogout(request)
     return HttpResponse(status=200)
 
-
 def account(request):
-    if not request.is_ajax() or request.method != 'POST':
+    if request.method != 'POST':
         return HttpResponse(status=501)
     try:
         data = json.loads(request.body)

@@ -5,9 +5,9 @@ from ingredient.models import Ingredient
 
 class RecipeManager(models.Manager):
 
-    def create(self, name, author, formula, duration, isAccepted, difficulty):
+    def create(self, name, author, formula, duration, difficulty, image):
         recipe = Recipe(name=name, author=author, formula=formula, duration=duration,
-                        isAccepted=isAccepted, difficulty=difficulty)
+                        isAccepted=False, difficulty=difficulty, image=image)
         recipe.save()
         return recipe
 
@@ -41,6 +41,24 @@ class RecipeManager(models.Manager):
                     break
         return searchRecipes
 
+    def searchIngredientName(self, ingredientName):
+        searchRecipes = list()
+        ingredient = Ingredient.objects.get(name=ingredientName)
+        for value in Ingredients.objects.filter(ingredient=ingredient):
+            searchRecipes.append(value.recipe)
+        return searchRecipes  
+
+    def searchType(self, typesToSearch):
+        searchRecipes = list()
+        recipes = Recipe.objects.all()
+
+        for recipe in recipes:
+            currentTypes = recipe.getTypes(jsonFormat=True)
+            for t in typesToSearch:
+                if t in currentTypes:
+                    searchRecipes.append(recipe)
+
+        return searchRecipes
 
 class Difficulty:
     UNKNOWN = 'unknown'
@@ -89,14 +107,14 @@ class Recipe(models.Model):
             'name': self.name,
             'type': self.getTypes(jsonFormat=True),
             'author': self.author.username,
-            'ingerdients': self.getIngredients(jsonFormat=True),
+            'ingredients': self.getIngredients(jsonFormat=True),
             'formula': self.formula,
             'duration': self.duration,
-            'dispalys': self.displays,
+            'displays': self.displays,
             'isAccepted': self.isAccepted,
             'difficulty': self.difficulty,
             'lastUpdate': self.lastUpdate.isoformat(),
-            'image': 'emptypath' # TODO: change to path
+            'image': self.image.url
         }
 
     def getIngredients(self, jsonFormat=False):
@@ -119,7 +137,7 @@ class Recipe(models.Model):
                     model.save()
                     return
         ingredients = Ingredients(recipe=self,
-                                  ingredient=Ingredient.objects.get(name=ingredientName),
+                                  ingredient=Ingredient.objects.get_or_create(name=ingredientName)[0],
                                   quantity = quantity)
         ingredients.save()
 

@@ -38,3 +38,7 @@ class Ingredient(models.Model):
             'name' : self.name,
             'value' : self.displays
         }
+
+    def increaseDisplays(self):
+        self.displays += 1
+        self.save()
