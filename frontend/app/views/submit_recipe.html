@@ -1,99 +1,92 @@
+<!--main-->
+<main class="main" role="main">
+	<!--wrap-->
+	<div class="wrap clearfix">
 
-	<!--main-->
-	<main class="main" role="main">
-		<!--wrap-->
-		<div class="wrap clearfix">
+		<!--row-->
+		<div class="row">
+			<header class="s-title">
+				<h1>Add a new recipe</h1>
+			</header>
 
-			<!--row-->
-			<div class="row">
-				<header class="s-title">
-					<h1>Add a new recipe</h1>
-				</header>
-					
-				<!--content-->
-				<section class="content full-width wow fadeInUp">
-					<div class="submit_recipe container">
-						<form>
-							<section>
-								<h2>Basics</h2>
-								<p>All fields are required.</p>
-								<div class="f-row">
-									<div class="full"><input type="text" placeholder="Recipe title" /></div>
+			<!--content-->
+			<section class="content full-width wow fadeInUp">
+				<div class="submit_recipe container">
+					<form>
+						<section>
+							<h2>Nazwa przepisu</h2>
+							<p>
+								Wszystkie pola są wymagane.
+							</p>
+							<div class="f-row">
+								<div class="full">
+									<input type="text" placeholder="Nazwa przepisu" ng-model="recipe.name"/>
 								</div>
-								<div class="f-row">
-									<div class="third"><input type="text" placeholder="Preparation time" /></div>
-									<div class="third"><input type="text" placeholder="Cooking time" /></div>
-									<div class="third"><input type="text" placeholder="Difficulty" /></div>
-								</div>
-								<div class="f-row">
-									<div class="third"><input type="text" placeholder="Serves how many people?" /></div>
-									<div class="third"><select><option selected="selected">Select a category</option></select></div>
-								</div>
-							</section>
-							
-							<section>
-								<h2>Description</h2>
-								<div class="f-row">
-									<div class="full"><textarea placeholder="Recipe title"></textarea></div>
-								</div>
-							</section>	
-							
-							<section>
-								<h2>Ingredients</h2>
-								<div class="f-row ingredient">
-									<div class="large"><input type="text" placeholder="Ingredient" /></div>
-									<div class="small"><input type="text" placeholder="Quantity" /></div>
-									<div class="third"><select><option selected="selected">Select a category</option></select></div>
-									<button class="remove">-</button>
-								</div>
-								<div class="f-row full">
-									<button class="add">Add an ingredient</button>
-								</div>
-							</section>	
-							
-							<section>
-								<h2>Instructions <span>(enter instructions, each step at a time)</span></h2>
-								<div class="f-row instruction">
-									<div class="full"><input type="text" placeholder="Instructions" /></div>
-									<button class="remove">-</button>
-								</div>
-								<div class="f-row full">
-									<button class="add">Add a step</button>
-								</div>
-							</section>
-							
-							<section>
-								<h2>Photo</h2>
-								<div class="f-row full">
-									<input type="file" />
-								</div>
-							</section>	
-							
-							<section>
-								<h2>Status <span>(would you like to further edit this recipe or are you ready to publish it?)</span></h2>
-								<div class="f-row full">
-									<input type="radio" id="r1" name="radio"/>
-									<label for="r1">I am still working on it</label>
-								</div>
-								<div class="f-row full">
-									<input type="radio" id="r2" name="radio"/>
-									<label for="r2">I am ready to publish this recipe</label>
-								</div>
-							</section>
-							
-							<div class="f-row full">
-								<input type="submit" class="button" id="submitRecipe" value="Publish this recipe" />
 							</div>
-						</form>
-					</div>
-				</section>
-				<!--//content-->
-			</div>
-			<!--//row-->
-		</div>
-		<!--//wrap-->
-	</main>
-	<!--//main-->
-	<script>new WOW().init();</script>
+							<div class="f-row">
+								<div class="third">
+									<select ng-model="recipe.type">
+										<option ng-repeat="t in types" value="{{t.id}}">{{t.name}}</option>
+									</select>
+								</div>
+							</div>
+						</section>
 
+						<section>
+							<h2>Opis przepisu</h2>
+							<div class="f-row">
+								<div class="full">
+									<textarea ng-model="recipe.description" placeholder="Opis przepisu"></textarea>
+</div>							</div>
+						</section>
+
+						<section>
+							<h2>Składniki:</h2>
+							<div class="f-row ingredient" ng-repeat="i in recipe.ingredients">
+								<div class="large">
+									<input type="text" ng-model="i.name" placeholder="Składnik" />
+								</div>
+								<div class="small">
+									<input type="text" ng-model="i.amount" placeholder="Ilość" />
+								</div>
+								<button class="remove" ng-click="removeIngredient(i)">
+									-
+								</button>
+							</div>
+							<div class="f-row full">
+								<button class="add" ng-click="addNewLine()">
+									Dodaj składnik
+								</button>
+							</div>
+						</section>
+
+						<section>
+							<h2>Instrukcje przygotowania <span>(podaj instrukcje oddzielając je pustymi liniami)</span></h2>
+							<div class="f-row instruction">
+								<div class="full">
+									<textarea placeholder="Instructions" ng-model="recipe.instructions"></textarea>
+</div>							</div>
+						</section>
+
+						<section>
+							<h2>Zdjęcie</h2>
+							<div class="f-row full">
+								<input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)"/>
+							</div>
+						</section>
+
+						<div class="f-row full">
+							<input type="submit" class="button" id="submitRecipe" value="Opublikuj!" ng-click="submitRecipe(recipe)"/>
+						</div>
+					</form>
+				</div>
+			</section>
+			<!--//content-->
+		</div>
+		<!--//row-->
+	</div>
+	<!--//wrap-->
+</main>
+<!--//main-->
+<script>new WOW().init();</script>
 

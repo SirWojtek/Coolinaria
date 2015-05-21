@@ -3,8 +3,8 @@ from django.db import models
 #TODO: imagePath is not validated during creation of Ingredient model.
 class IngredientManager(models.Manager):
 
-    def create(self, name, description, imagePath, isSearchable = True):
-        ingredient = Ingredient(name = name, description = description, image = imagePath,
+    def create(self, name, image = 'emptypath', isSearchable = True):
+        ingredient = Ingredient(name = name, image = image,
                                 isSearchable = isSearchable)
 
         ingredient.save()
@@ -13,7 +13,28 @@ class IngredientManager(models.Manager):
 
 class Ingredient(models.Model):
     name = models.CharField(max_length = 64, unique = True)
-    description = models.TextField()
     image = models.ImageField(upload_to = 'ingredient')
     isSearchable = models.BooleanField(default = True)
+    displays = models.IntegerField(default = 0)
     objects = IngredientManager()
+
+    def getDict(self):
+        return {
+            'name': self.name,
+            'image': 'emptypath', # TODO: change to path
+            'isSearchable' : self.isSearchable,
+            'displays' : self.displays
+        }
+
+    def getTiledDict(self):
+        return {
+            'name' : self.name,
+            'image' : 'emptypath',
+            'displays' : self.displays
+        }
+
+    def getStatDict(self):
+        return {
+            'name' : self.name,
+            'value' : self.displays
+        }
