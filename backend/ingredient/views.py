@@ -9,7 +9,7 @@ def ingredientIndex(request):
     if request.method == 'GET':
         return _getIngredients()
     elif request.method == 'POST':
-        data = json.loads(request.body)
+        data = json.loads(request.POST['ingredient'])
         ingredient = _findIngredient(data)
 
         if ingredient:
@@ -47,7 +47,7 @@ def _addIngredient(data, request):
     try:
         ingredient = Ingredient.objects.create(
             name = data['name'],
-            # image = _loadImage(request, data['name']),
+            image = request.FILES.itervalues().next(),
             isSearchable = data['searchable'])
     except Exception as e:
         print e
