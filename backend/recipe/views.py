@@ -79,8 +79,8 @@ def create(request):
             recipe.addType(type)
     except KeyError:
         return HttpResponse(status=501)
-    # except (DatabaseError, ObjectDoesNotExist):
-    #     return HttpResponse(status=220)
+    except (DatabaseError, ObjectDoesNotExist):
+        return HttpResponse(status=220)
     return HttpResponse(status=200)
 
 
