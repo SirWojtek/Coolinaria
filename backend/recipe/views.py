@@ -1,5 +1,4 @@
 from recipe.models import Recipe, Ingredients
-from recipe.forms import RecipeForm
 from ingredient.models import Ingredient
 from account.models import User
 from django.http import HttpResponse, JsonResponse
