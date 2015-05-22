@@ -9,7 +9,7 @@ angular.module('frontApp').service('ingredientService', function($http, $q) {
 	// AngularJS will instantiate a singleton by calling "new" on this function
 
 	var _ingredients = undefined;
-	var ingredientEndpoint = 'http://192.168.50.2:8000/ingredient/';
+	var ingredientEndpoint = 'http://156.17.42.126:1280/ingredient/';
 
 	this.reloadIngredients = function() {
 		// TODO: To be implemented

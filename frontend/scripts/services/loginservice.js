@@ -9,7 +9,7 @@ angular.module('frontApp').service('loginService',
 		[ '$q', '$http', function($q, $http) {
 			var _logged = false;
 			var _isModerator = false;
-			var loginEndpoint = 'http://192.168.50.2:8000/account/login/';
+			var loginEndpoint = 'http://156.17.42.126:1280/account/login/';
 			var logoutEndpoint = 'http://api.mydomain.com/logout/';
 
 			this.sayHello = function() {

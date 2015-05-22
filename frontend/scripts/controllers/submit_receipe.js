@@ -9,7 +9,7 @@ angular.module('frontApp').controller('SubmitReceipeCtrl', function($scope, $htt
 
 	$scope.awesomeThings = [ 'HTML5 Boilerplate', 'AngularJS', 'Karma' ];
 
-	var uploadUrl = "http://192.168.50.2:8000/recipe/new/"
+	var uploadUrl = "http://156.17.42.126:1280/recipe/new/"
 	
 	$scope.types = [ {
 		"name" : "Śniadania",

@@ -17,8 +17,8 @@ angular
 						function(conf, $http, $httpBackend, $q) {
 
 							var searchResults = undefined;
-							var receipeSearch = 'http://192.168.50.2:8000/recipe/search/';
-							var receipeGet = 'http://192.168.50.2:8000/recipe/get/';
+							var receipeSearch = 'http://156.17.42.126:1280/recipe/search/';
+							var receipeGet = 'http://156.17.42.126:1280/recipe/get/';
 
 							this.search = function(ingredient, types) {
 								console.log("Search");
