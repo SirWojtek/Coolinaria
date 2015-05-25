@@ -1,4 +1,4 @@
-from recipe.models import Recipe, Ingredients
+from recipe.models import Recipe, Ingredients, DISH_TYPE
 from ingredient.models import Ingredient
 from account.models import User
 from django.http import HttpResponse, JsonResponse
@@ -6,6 +6,40 @@ from django.db import DatabaseError
 from django.core.exceptions import ObjectDoesNotExist
 from django.views.decorators.csrf import csrf_exempt
 import json
+import xml.etree.ElementTree as ET
+import random
+
+f = 'przepisy2.xml'
+
+def load(request):
+    tree = ET.parse(f)
+    root = tree.getroot()
+
+    for przepis in root:
+        nazwa = przepis[0].text
+        fota = przepis[1].text
+        czas = przepis[2].text
+        ocena = przepis[3].text
+        kroki = ""
+        skladniki = []
+
+        for krok in przepis[4]:
+            kroki += krok.text + r'\n'
+        for skladnik in przepis[5]:
+            skladniki.append(skladnik)
+
+        recipe = Recipe.objects.create(name=nazwa,
+                                       author=User.objects.get(username = 'admin@admin.pl'),
+                                       formula=kroki,
+                                       duration=czas,
+                                       image='null',
+                                       difficulty=ocena)
+        recipe.image.name = 'recipe/' + fota
+        for skladnik in skladniki:
+            recipe.addIngredient(skladnik[0], skladnik[1])
+        recipe.addType(DISH_TYPE[random.randint(0, 4)][1])
+        print recipe
+    return HttpResponse()
 
 @csrf_exempt
 def search(request):
