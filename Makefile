@@ -34,7 +34,7 @@ superuser:
 	python $(project)/manage.py createsuperuser
 
 front:
-	grunt --base $(front) --gruntfile $(front)/Gruntfile.js
+	grunt --force --base $(front) --gruntfile $(front)/Gruntfile.js
 
 back:
 	python $(project)/manage.py runserver localhost:8080
