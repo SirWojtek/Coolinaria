@@ -120,3 +120,12 @@ def delete(request, recipeId):
         return HttpResponse(status=501)
     Recipe.objects.delete(recipeId)
     return HttpResponse(status=200)
+
+def toAccept(request):
+    try:
+        recipes = []
+        for recipe in Recipe.objects.filter(isAccepted = False):
+            recipes.append(recipe.getDict())
+        return HttpResponse(json.dumps(recipes))
+    except:
+        return HttpResponse(status = 502)

@@ -33,9 +33,9 @@ def _findIngredient(data):
         return None
     return ingredient
 
-def _editIngredient(ingredient, data):
+def _editIngredient(ingredient, data, request):
     try:
-        ingredient.image = 'emptypath'
+        ingredient.image = request.FILES.itervalues().next()
         ingredient.isSearchable = data['searchable']
         ingredient.save()
     except Exception as e:
