@@ -10,7 +10,8 @@ class UserManager(UserManager):
     def create(self, email, password):
         validate_email(email)
         user = User.objects.create_user(username=email, email=email, password=password)
-        user.save()
+        user.is_staff = False
+	user.save()
         return user
 
     def authenticate(self, email, password):

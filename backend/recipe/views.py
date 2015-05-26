@@ -9,7 +9,7 @@ import json
 import xml.etree.ElementTree as ET
 import random
 
-f = 'przepisy2.xml'
+f = '/opt/coolinaria/backend/przepisy2.xml'
 
 def load(request):
     tree = ET.parse(f)
@@ -34,11 +34,13 @@ def load(request):
                                        duration=czas,
                                        image='null',
                                        difficulty=ocena)
-        recipe.image.name = 'recipe/' + fota
+        recipe.image = 'recipe/' + fota
+	recipe.save()
         for skladnik in skladniki:
-            recipe.addIngredient(skladnik[0], skladnik[1])
-        recipe.addType(DISH_TYPE[random.randint(0, 4)][1])
-        print recipe
+            if not skladnik[1].text:
+                continue
+            recipe.addIngredient(skladnik[1].text, skladnik[0].text)
+        recipe.addType(DISH_TYPE[random.randint(0, 4)][0])
     return HttpResponse()
 
 @csrf_exempt
