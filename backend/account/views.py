@@ -26,15 +26,14 @@ def logout(request):
     userLogout(request)
     return HttpResponse(status=200)
 
+@csrf_exempt
 def account(request):
     if request.method != 'POST':
         return HttpResponse(status=501)
     try:
         data = json.loads(request.body)
         if request.user.is_anonymous():
-            user = User.objects.create(email=data['email'],
-                                       password=data['password'])
-            print 'Create: ' + str(user)
+            createOrThrow(data)
         else:
             user = User.objects.update(userId=request.user.id,
                                        email=data['email'],
@@ -48,3 +47,14 @@ def account(request):
     except ValidationError:
         return HttpResponse(status=221)
     return HttpResponse(status=200)
+
+def createOrThrow(data):
+    try:
+        User.objects.get(email=data['email'])
+    except ObjectDoesNotExist:
+        user = User.objects.create(email=data['email'],
+            password=data['password'])
+        print 'Create: ' + str(user)
+        return
+    raise ObjectDoesNotExist
+
