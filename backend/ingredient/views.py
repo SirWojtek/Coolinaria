@@ -13,7 +13,7 @@ def ingredientIndex(request):
         ingredient = _findIngredient(data)
 
         if ingredient:
-            return _editIngredient(ingredient, data)
+            return _editIngredient(ingredient, data, request)
         else:
             return _addIngredient(data, request)
 
@@ -35,8 +35,10 @@ def _findIngredient(data):
 
 def _editIngredient(ingredient, data, request):
     try:
-        ingredient.image = request.FILES.itervalues().next()
-        ingredient.isSearchable = data['searchable']
+        if request.FILES:
+            ingredient.image = request.FILES.itervalues().next()
+        ingredient.isSearchable = data['isSearchable']
+        ingredient.displays = data['displays']
         ingredient.save()
     except Exception as e:
         print e
