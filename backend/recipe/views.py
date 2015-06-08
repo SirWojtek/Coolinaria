@@ -24,7 +24,7 @@ def load(request):
         skladniki = []
 
         for krok in przepis[4]:
-            kroki += krok.text + r'\n'
+            kroki += krok.text + '\r\n'
         for skladnik in przepis[5]:
             skladniki.append(skladnik)
 
@@ -124,7 +124,7 @@ def update(request, recipeId):
     if request.method != 'POST' or not request.user:
         return HttpResponse(status=501)
     try:
-        data = json.loads(request.body)
+        data = json.loads(request.POST['recipe'])
         recipe = Recipe.objects.get(id=recipeId)
         if not recipe.author.is_staff and recipe.author.name != request.user.name:
             return HttpResponse(status=501)

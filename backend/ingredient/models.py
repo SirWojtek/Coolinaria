@@ -19,19 +19,29 @@ class Ingredient(models.Model):
     objects = IngredientManager()
 
     def getDict(self):
-        return {
+        result = {
             'name': self.name,
             'image': 'emptypath', # TODO: change to path
             'isSearchable' : self.isSearchable,
             'displays' : self.displays
         }
+        try:
+            result['image'] = self.image.url
+        except:
+            result['image'] = 'emptypath'
+        return result
 
     def getTiledDict(self):
-        return {
+        result =  {
             'name' : self.name,
             'image' : 'emptypath',
             'displays' : self.displays
         }
+        try:
+            result['image'] = self.image.url
+        except:
+            result['image'] = 'emptypath'
+        return result
 
     def getStatDict(self):
         return {

@@ -8,18 +8,20 @@ from django.views.decorators.csrf import csrf_exempt
 
 @csrf_exempt
 def login(request):
+    isStaff = False
     if request.method != 'POST':
         return HttpResponse(status=501)
     try:
         data = json.loads(request.body)
         user = User.objects.authenticate(email=data['email'], password=data['password'])
+        isStaff = user.is_staff
         userLogin(request, user)
         print 'Login: ' + str(user)
     except KeyError:
         return HttpResponse(status=501)
     except (ValidationError, DatabaseError, ObjectDoesNotExist):
         return HttpResponse(status=220)
-    return JsonResponse({'isModerator': True})
+    return JsonResponse({'isModerator': isStaff})
 
 def logout(request):
     print 'Logout: ' + str(request.user)
